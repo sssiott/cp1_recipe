@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block contents %}
+
+{% if ingredients != "" %}        
+    {{ingredients}} (을)를 검색했어요.<br>
+{% else %}
+{% endif %}
+
+{% if price != "" %}
+    {{price}} 원 이내로 만들 수 있는 레시피에요.<br>
+{% else %}
+{% endif %}
+
+{% if category != "" %}
+    {{category}} 카테고리에 있는 레시피에요.<br>
+{% else %}
+{% endif %}
+
+{% if dislike %}
+    {{dislike}} (이)가 포함되지 않은 레시피를 준비했어요.<br>
+{% else %}
+{% endif %}
+
+{% endblock contents %}
