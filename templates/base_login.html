@@ -19,14 +19,14 @@
 <body topmargin="50" leftmargin="50">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/">Recipe for everyone</a>
+          <a class="navbar-brand" href="/home">Recipe for everyone</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" href="/" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" href="/home" aria-current="page" href="#">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/aboutus">About Us</a>
@@ -50,13 +50,20 @@
               </li>
             </ul>
 
-            
+            <!-- {% if username != "" %}-->
+            <form methods="post" id="logout" action="/logout">
+              {{ username }} 님 환영합니다!
+            <button type="submit" class="logout">로그아웃</button>
+            </form>
+
+            <!--{% else %}-->
             <form methods="post" id="login" action="/home">
               <input type="text" id="login_id" name="loginId" placeholder="ID">
               <input type="password" id="login_pw" name="loginPw" placeholder="PASSWORD">
               <button type="submit" class="login">로그인</button>
             </form>
-
+            <!-- {% endif %}-->
+            
 
             <!-- 
             <form class="login" method="post" action = "/home_login">

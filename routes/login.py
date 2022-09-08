@@ -4,21 +4,28 @@ import pymysql
 
 bp = Blueprint('login', __name__, url_prefix='/')
 
-# 로그인 페이지 만들기
-@bp.route('login', methods = ['GET','POST'])
+ID = "hello"
+PW = "world"
+
+# @bp.route('login', methods = ['GET','POST'])
+# def login():
+
+#     id = request.form['id']
+#     pw = request.form['pw']
+
+#     if (id == "admin") & (pw == "admin"):
+#         return render_template('home_login.html', id=id)
+#     else:
+#         return render_template('home.html')
+
+@bp.route('login', methods=["GET","POST"])
 def login():
-    return render_template('login.html')
+    global ID, PW
+    loginId = request.args.get['loginId']
+    loginPw = request.args.get['loginPw']
 
-
-# 로그인 성공후 페이지 만들기 
-@bp.route('login_done', methods=['POST'])
-def login_done():
-    if request.method == 'POST':
-
-   	  # 변수 지정 
-        Name = request.form['Name'] 
-        Age = request.form['Age']
-        return render_template('login_done.html', Name=Name, Age = Age)
+    if ID == loginId and PW == loginPw:
+        session["userID"] = loginId
+        return redirect(url_for("index"))
     else:
-        return redirect(url_for('login'))
-
+        return redirect(url_for("index"))

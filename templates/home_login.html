@@ -1,0 +1,16 @@
+{% extends "base_login.html" %}
+
+
+{% block contents %}
+안녕하세요. Team 4의 home_screen 입니다.
+<br>
+<form method="post" action= "/search/">
+    <label>ingredients : <input type="text" name="ingredients"></label><br><br>
+    <label>price : <input type="text" name="price"></label><br><br>
+    <label>category : <input type="text" name="category"></label><br><br>
+    <label>dislike : <input type="text" name="dislike"></label><br><br>
+
+    <input type="submit" value="레시피 검색">
+</form>    
+
+{% endblock contents %}

@@ -2,12 +2,50 @@ from flask import Flask, render_template, request, redirect, url_for,jsonify, se
 from routes import search_route, login
 
 app = Flask(__name__)
+app.secret_key = "aklsdfjij2@lidfjalk"
 app.register_blueprint(search_route.bp)
 app.register_blueprint(login.bp)
 
-@app.route('/', methods = ['GET','POST'])
+ID = "hello"
+PW = "world"
+
+
+@app.route('/', methods = ['get','post'])
 def index():
     return render_template("home.html")
+    
+@app.route('/home', methods = ['get','post'])
+def home():    
+    global ID, PW
+
+    loginId = request.args.get('loginId')
+    loginPw = request.args.get('loginPw')
+    
+    if (loginId == ID) & (loginPw == PW):
+        global session
+        session["userID"] = loginId
+        return render_template("home_login.html", username = session["userID"])
+    else:
+        return render_template("home_login.html", username = session["userID"])
+    
+    #return render_template("home_login.html", login = True, username = session.get("userID"))
+    # else:
+        # return render_template("home_login.html", username = session["userID"])
+
+    # loginId = request.args.get('loginId')
+    # loginPw = request.args.get('loginPw')
+
+    # if ID == loginId and PW == loginPw:
+    #     return render_template("home_login.html", username = loginId)
+    # else:
+    #     return redirect(url_for('index'))
+
+
+
+@app.route('/logout', methods = ['get','post'])
+def logout():
+    session.pop("userID")
+    return redirect(url_for('home'))
     
 
 @app.route('/signin')
@@ -32,11 +70,11 @@ def image_test():
 
 @app.route('/aboutus')
 def aboutus():
-    return render_template("aboutus.html")
+    return render_template("aboutus.html", username = session["userID"])
 
 @app.route('/regis_recipe')
 def regis_recipe():
-    return render_template("regis_recipe.html")
+    return render_template("regis_recipe.html", username = session["userID"])
 
 if __name__ == '__main__':
     app.debug = True
