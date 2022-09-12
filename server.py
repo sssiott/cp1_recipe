@@ -1,10 +1,11 @@
 from flask import Flask, render_template, request, redirect, url_for,jsonify, session
-from routes import search_route, login
+from routes import search_route, login, regist_recipe
 
 app = Flask(__name__)
 app.secret_key = "aklsdfjij2@lidfjalk"
 app.register_blueprint(search_route.bp)
 app.register_blueprint(login.bp)
+app.register_blueprint(regist_recipe.bp)
 
 ID = "hello"
 PW = "world"
@@ -71,10 +72,6 @@ def image_test():
 @app.route('/aboutus')
 def aboutus():
     return render_template("aboutus.html", username = session["userID"])
-
-@app.route('/regis_recipe')
-def regis_recipe():
-    return render_template("regis_recipe.html", username = session["userID"])
 
 if __name__ == '__main__':
     app.debug = True

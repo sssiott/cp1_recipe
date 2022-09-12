@@ -1,0 +1,104 @@
+{% extends "base_login.html" %} {% block contents %}
+<div class="form_wrap">
+  <h1>레시피등록</h1>
+  <form action="/regist_recipe/commit" method="post">
+    <label>레시피 이름 <input type="text" name="menu_name" /></label>
+    <br />
+    <div id="ingred_wrap">
+      <div class="ingred1">
+        <label for="unit"
+        >재료1
+        <input type="text" name="ingred1" placeholder="ex) 계란"
+        /></label>
+        <input type="text" name="ingred1_unit" placeholder="ex> 1개">
+      </div>
+      <div class="ingred2">
+        <label for="unit"
+        >재료2
+        <input type="text" name="ingred2" placeholder="ex) 계란"
+        /></label>
+        <input type="text" name="ingred2_unit" placeholder="ex> 1개">
+      </div>
+      <div class="ingred3">
+        <label for="unit"
+        >재료3
+        <input type="text" name="ingred3" placeholder="ex) 계란"
+        /></label>
+        <input type="text" name="ingred3_unit" placeholder="ex> 1개">
+      </div>
+
+      <div class="ingred4">
+        <label for="unit"
+        >재료4
+        <input type="text" name="ingred4" placeholder="ex) 계란"
+        /></label>
+        <input type="text" name="ingred4_unit" placeholder="ex> 1개">
+      </div>
+      <div class="ingred5">
+        <label for="unit"
+        >재료5
+        <input type="text" name="ingred5" placeholder="ex) 계란"
+        /></label>
+        <input type="text" name="ingred5_unit" placeholder="ex> 1개">
+      </div>
+      <div class="ingred6">
+        <label for="unit"
+        >재료6
+        <input type="text" name="ingred6" placeholder="ex) 계란"
+        /></label>
+        <input type="text" name="ingred6_unit" placeholder="ex> 1개">
+      </div>
+      <div class="ingred7">
+        <label for="unit"
+        >재료7
+        <input type="text" name="ingred7" placeholder="ex) 계란"
+        /></label>
+        <input type="text" name="ingred7_unit" placeholder="ex> 1개">
+      </div>
+      <div class="ingred8">
+        <label for="unit"
+        >재료8
+        <input type="text" name="ingred8" placeholder="ex) 계란"
+        /></label>
+        <input type="text" name="ingred8_unit" placeholder="ex> 1개">
+      </div>
+      <div class="ingred9">
+        <label for="unit"
+        >재료9
+        <input type="text" name="ingred9" placeholder="ex) 계란"
+        /></label>
+        <input type="text" name="ingred9_unit" placeholder="ex> 1개">
+      </div>
+      <div class="ingred10">
+        <label for="unit"
+        >재료10
+        <input type="text" name="ingred10" placeholder="ex) 계란"
+        /></label>
+        <input type="text" name="ingred10_unit" placeholder="ex> 1개">
+      </div>
+      <!-- <select id="unit">
+        <option value="#">마리</option>
+        <option value="#">개</option>
+      </select> -->
+    </div>
+    <br /><br />
+    <!-- <input type="button" value="재료 추가" onclick="add_textbox()" /> -->
+    <input type="submit" value="등록" />
+    <input type="reset" value="재설정" />
+  </form>
+</div>
+<link rel="stylesheet" href="../static/regi_recipe.css" />
+<script>
+  const add_textbox = () => {
+    const box = document.getElementById("ingred_wrap");
+    const newP = document.createElement("label");
+    newP.innerHTML =
+      "<input type='text' name='add_ingreds'> <input type='button' value='삭제' onclick='remove(this)'>";
+    box.appendChild(newP);
+  };
+  const remove = (obj) => {
+    document.getElementById("ingred_wrap").removeChild(obj.parentNode);
+  };
+</script>
+
+{% endblock contents %}
