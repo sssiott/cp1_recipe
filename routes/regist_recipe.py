@@ -14,7 +14,7 @@ def commit_recipe():
     ingred_list = {}
     for i in range(1,11):
         if request.form[f'ingred{i}']:
-            ingred_list[request.form[f'ingred{i}']] = request.form[f'ingred{i}_unit']
+            ingred_list[request.form[f'ingred{i}']] = request.form[f'ingred{i}_unit']+request.form[f'ingred{i}_unittype']
         else:
             pass
         
