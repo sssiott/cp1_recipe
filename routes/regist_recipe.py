@@ -17,6 +17,7 @@ def commit_recipe():
             ingred_list[request.form[f'ingred{i}']] = request.form[f'ingred{i}_unit']
         else:
             pass
-    
+        
+    preprocessing(ingred_list)
 
     return render_template("commit_recipe.html", name=name, ingred_list=ingred_list)
